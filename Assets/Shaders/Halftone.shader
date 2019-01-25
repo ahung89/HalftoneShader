@@ -55,10 +55,11 @@
 				fixed4 texCol = tex2D(_MainTex, i.uv);
 				float darkness = (1 - Luminance(texCol.rgb));
 
-				float scaleIncrement = (1 / _NumLevels);
-				//darkness = (darkness * 1.35) - .15;
+				float scaleIncrement = (1 / _NumLevels) * 1.25;
+				darkness = (darkness * 1.35) - .15;
 
 				float scale = floor((darkness) / (1 / _NumLevels)) * scaleIncrement;
+				//scale *= 1.25;
 				_GridScale /= scale + .001;
 
 				float stagger = fmod(floor(i.uv.y * _GridScale), 2);
@@ -66,8 +67,10 @@
 				fixed2 dotUv = fixed2(i.uv.x * (_ScreenParams.x / _ScreenParams.y), i.uv.y) * _GridScale;
 				dotUv.x += stagger * .5;
 				float dotCol = step(scale * _DotSizeMult, length(frac(dotUv) - .5));
+				//(1 / _NumLevels))) * (1 / _NumLevels)
+				float inc = 1 / _NumLevels;
 
-				return Luminance(lerp(fixed4(1, 1, 1, 1) * dotCol, pow((texCol.rgb), _LuminancePower), _LuminanceLerp));
+				return lerp(fixed4(1, 1, 1, 1) * dotCol, floor(Luminance(pow((texCol.rgb), _LuminancePower)) / inc) * inc, _LuminanceLerp);
             }
             ENDCG
         }
