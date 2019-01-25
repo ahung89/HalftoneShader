@@ -64,14 +64,17 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DotSizeBase: 0.15
+    - _DotSizeMult: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _GridScale: 30
+    - _GridScale: 50
+    - _LuminanceLerp: 0.75
+    - _LuminancePower: 2
     - _Metallic: 0
     - _Mode: 0
-    - _NumLevels: 5
+    - _NumLevels: 15
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _ScaleIncrement: 0.7

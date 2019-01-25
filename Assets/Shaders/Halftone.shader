@@ -55,8 +55,8 @@
 				fixed4 texCol = tex2D(_MainTex, i.uv);
 				float darkness = (1 - Luminance(texCol.rgb));
 
-				float scaleIncrement = (1 / _NumLevels) * 1.25;
-				darkness = (darkness * 1.35) - .15;
+				float scaleIncrement = (1 / _NumLevels);
+				//darkness = (darkness * 1.35) - .15;
 
 				float scale = floor((darkness) / (1 / _NumLevels)) * scaleIncrement;
 				//scale *= 1.25;
